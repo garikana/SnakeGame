@@ -1,4 +1,4 @@
-#include "Artifact.h"
+#include "Engine/Artifact.h"
 #include<string>
 #include<map>
 #include<SFML/Graphics.hpp>

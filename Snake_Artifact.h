@@ -1,11 +1,11 @@
-#include "Artifact.h"
+#include "Engine/Artifact.h"
 #include<string>
 #include<map>
 #include<deque>
 #include<SFML/Graphics.hpp>
 /*
  * Snake Artifact class
- * Implements Artifact abstract class 
+ * Implements Artifact abstract class
  */
 
  class Snake_Artifact : public Artifact{
