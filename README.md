@@ -13,6 +13,10 @@ files to /usr/local/lib).
 g++ -std=c++11 -o SnakeGame SnakeGame.cpp Engine/Game.cpp Snake_Artifact.cpp Apple_Artifact.cpp -lsfml-graphics -lsfml-window -lsfml-system
 ```
 Note:- For MacOSX some of the dependent dynamic libraries for SFML are provided as .framework files. Linking with .framework files requires additional flags on g++ the commandline. A somewhat detailed instructions on how to do this on MacOSX is provided here [Linking with Frameworks on OSX](compiling_and_linking_withSFML.txt).
+Below is an example of how the command looks on MacOSX.
+```
+g++ -std=c++11 -o SnakeGame SnakeGame.cpp Engine/Game.cpp Snake_Artifact.cpp Apple_Artifact.cpp -F /Users/grognard/Downloads/SFML-2.5.1-macos-clang/extlibs/Frameworks -rpath /Users/grognard/Downloads/SFML-2.5.1-macos-clang/extlibs/Frameworks -framework FLAC -framework freetype -framework ogg -framework OpenAL -framework vorbis -framework vorbisenc -framework vorbisfile -lsfml-graphics -lsfml-window -lsfml-system
+```
 ### Game Architecture
 #### Classes:-
 The game is built on 2 main classes.
