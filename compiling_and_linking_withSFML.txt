@@ -1,0 +1,40 @@
+---------------------------------------------------------------------------
+This document explains how to compile and link external libraries on MacOSX
+---------------------------------------------------------------------------
+
+A brief introduction to the compiling & linking process on MacOSX:-
+
+When compiling a c++ source file, the included header files will be searched in fixed OS specific standard paths.(Ex:- /usr/local/include)
+To tell the compiler to search from non-standard paths, we need to use "-I" option.
+
+Ex:-  g++ -c test.cpp -I<non-standard path to header files>
+
+Similarily while linking , the linker searches for in fixed OS specific standard path.(Ex: /usr/lib)
+To tell the compiler to search libraries from non-standard paths, we need to use "-L" option. In addition to this, we need to supply the library names themselves using "-l" option.
+
+Ex:- To link library libtest.so(Usually library names start with lib & end with .so .a for static libraries .dylib for dynamic libraries)
+
+g++ test.o -o test -L<non-standard path to libtest.so> -ltest
+
+Note how we ignored the 'lib' prefix and '.so' extension when including the library name on the commandline.
+This is the way to link static libraries to our executable. But there is another type of library called dynamic libraries, which don't get included into our executable during the linking process. Instead a path to the dynamic library will be placed into our executable and at runtime, this path will be used to include the corresponding library executable.
+
+The procedure to link dynamic libraries into our executable is very similar to the static libraries, with one additional step. We also sometimes need to specify the runtime path where the dynamic library will be found to the linker. This is achieved using '-rpath' option. Note that I said sometimes because we seem to getaway without providing the -rpath option. But when OSX has another complication when it comes to Frameworks.
+
+Sometimes external libraries are provided as 'Frameworks' for OSX. These are libraries ending with '.framework' extension. When external libraries are installed these usually get copied to standard paths like /Library/Frameworks. But when frameworks are in non-standard path we will have problem linking them against our executable. 
+
+Ex:- To link test.framework found in /project/Frameworks directory, we use the flags '-F' & '-framework' as shown below
+
+g++ test.o -o test -F /project/Frameworks -framework test
+
+And if we get runtime error during execution like below, it means that during runtime the dynamic library path  is not found. In such cases we need to use '-rpath' option to specific the path to the framework
+
+dyld: Library not loaded: @rpath/../Frameworks/test.framework/Versions/A/test
+  Referenced from: /Users/Programs/./a.out
+  Reason: image not found
+Abort trap: 6
+
+Use '-rpath' option to specify the path to the dynamic library as below:-
+
+g++ test.o -o test -F /project/Frameworks  -rpath /project/Frameworks -framework test 
+ 
