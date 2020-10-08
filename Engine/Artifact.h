@@ -21,4 +21,8 @@
     virtual int size()=0; //abstract concept of artifact size
 
  };
+
+ /* aliases */
+ using Artifact_Map = std::map<std::string,Artifact*>;
+ using Event_Vec = std::vector<sf::Event>;
  #endif

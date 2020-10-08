@@ -12,7 +12,7 @@ Apple_Artifact::Apple_Artifact(float sz)
 }
 
 //check if Apple is eaten by Snake
-bool Apple_Artifact::eaten_Snake(std::map<std::string,Artifact*>& Game_Artifacts){
+bool Apple_Artifact::eaten_Snake(Artifact_Map& Game_Artifacts){
   Artifact* snake = Game_Artifacts["Snake"];
   std::pair<float,float> snake_pos = snake->get_Position();
   sf::Vector2f apple_pos = data.getPosition();
@@ -43,9 +43,9 @@ bool Apple_Artifact::draw(sf::RenderWindow& window){
 
 // Implements Apple Artifact update
 // Apple Artifact update => generate next Apple position if eaten by Snake
-bool Apple_Artifact::update(std::map<std::string,Artifact*>& Game_Artifacts,
+bool Apple_Artifact::update(Artifact_Map& Game_Artifacts,
                         sf::RenderWindow& window,
-                        std::vector<sf::Event>& Events){
+                        Event_Vec& Events){
   if(eaten_Snake(Game_Artifacts)){
     //update apple position randomly in the window
     sf::Vector2u win_sz = window.getSize();

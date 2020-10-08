@@ -4,7 +4,6 @@
 #include<SFML/Graphics.hpp>
 #include<SFML/System.hpp>
 
-
 /*
  * Game class
  * This class is the main game engine
@@ -35,11 +34,11 @@
 
  protected:
    //game update is game dependent, should be virtual
-   virtual bool update_State(std::vector<sf::Event>& Events);
+   virtual bool update_State(Event_Vec& Events);
 
    //scoring is game dependent, should be virtual
    virtual int get_Score();
-   
+
    // get input Events
    std::vector<sf::Event> get_Input();
 
@@ -47,7 +46,7 @@
    void draw_to_screen();
  private:
    sf::RenderWindow window; //main game Window
-   std::map<std::string,Artifact*> Artifacts; //game artifacts collection
+   Artifact_Map Artifacts; //game artifacts collection
    sf::Time win_refresh_freq; //game refresh rate in secs
    std::string game_name{""}; //name of the game
    sf::Font game_font; //font to use for all text in the game

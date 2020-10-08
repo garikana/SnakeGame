@@ -38,7 +38,7 @@ void Game::run(){
        clock.restart();
 
      /* get input events */
-     std::vector<sf::Event> Events = get_Input();
+     Event_Vec Events = get_Input();
 
      /* clear window */
      window.clear(sf::Color::Black);
@@ -82,7 +82,7 @@ void Game::draw_to_screen(){
 }
 
 //game update
-bool Game::update_State(std::vector<sf::Event>& Events){
+bool Game::update_State(Event_Vec& Events){
   //game state is Artifacts Vector
   /*for(std::pair<std::string,Artifact*> p: Artifacts){
     //we pass the game class as input
@@ -101,8 +101,8 @@ bool Game::update_State(std::vector<sf::Event>& Events){
   return true;
 }
 /* get event input */
-std::vector<sf::Event> Game::get_Input(){
-  std::vector<sf::Event> Events;
+Event_Vec Game::get_Input(){
+  Event_Vec Events;
   sf::Event event;
   while(window.pollEvent(event)){
     Events.push_back(event);

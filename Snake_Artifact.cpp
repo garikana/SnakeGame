@@ -21,7 +21,7 @@ int Snake_Artifact::size(){
   return data.size()-1;
 }
 //collison with window or with itself
-bool Snake_Artifact::check_collision(std::map<std::string,Artifact*>& Game_Artifacts,
+bool Snake_Artifact::check_collision(Artifact_Map& Game_Artifacts,
                                      sf::RenderWindow& window){
   //check collision with Window
   sf::RectangleShape head = data.front();
@@ -47,7 +47,7 @@ bool Snake_Artifact::check_collision(std::map<std::string,Artifact*>& Game_Artif
 }
 
 //collision with Apple
-bool Snake_Artifact::eat_Apple(std::map<std::string,Artifact*>& Game_Artifacts,
+bool Snake_Artifact::eat_Apple(Artifact_Map& Game_Artifacts,
                                sf::RenderWindow& window){
   Artifact* apple = Game_Artifacts["Apple"];
   std::pair<float,float> apple_pos = apple->get_Position();
@@ -69,8 +69,8 @@ bool Snake_Artifact::draw(sf::RenderWindow& window){
 
 //update - implements snake Artifact update
 // snake update => snake movement
-bool Snake_Artifact::update(std::map<std::string,Artifact*>& Game_Artifacts,
-                        sf::RenderWindow& window, std::vector<sf::Event>& Events){
+bool Snake_Artifact::update(Artifact_Map& Game_Artifacts,
+                        sf::RenderWindow& window, Event_Vec& Events){
 
   for(sf::Event event : Events){
     switch(event.type)
