@@ -7,7 +7,7 @@ Object-Oriented Implementation of SnakeGame in C++
 1) This implementation uses SFML Graphic library. Hence copy SFML library files to your platform's usual locations(Ex:- headers to /usr/local/include & lib 
 files to /usr/local/lib).
 2) Clone this repo to your platform
-3) Build executable using the below command. For more detailed instructions in compiling and linking programs using SFML, read 'Getting Started" secion of the link
+3) Build executable using the below command. For more detailed instructions in compiling and linking programs using SFML, read 'Getting Started" section of the link
 [SFML compile & link](https://www.sfml-dev.org/tutorials/2.5/).
 ```
 g++ -std=c++14 -o SnakeGame SnakeGame.cpp Engine/Game.cpp Snake_Artifact.cpp Apple_Artifact.cpp -lsfml-graphics -lsfml-window -lsfml-system
