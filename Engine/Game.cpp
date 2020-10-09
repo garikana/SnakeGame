@@ -14,8 +14,10 @@ void Game::init(float r_rate,
 }
 
 // add game artifacts
-void Game::add_Artifacts(std::string Artifact_Name, Artifact& a){
-  Artifacts[Artifact_Name] = &a;
+void Game::add_Artifacts(std::string Artifact_Name, std::unique_ptr<Artifact> A_ptr){
+  //Artifacts.insert(std::pair<std::string,std::unique_ptr<Artifact>>(Artifact_Name,A_ptr));
+  //unique_ptr =operator only accepts rvalues,
+  Artifacts[Artifact_Name] = std::move(A_ptr);
 }
 
 // Game run
@@ -63,9 +65,10 @@ int Game::get_Score(){
 void Game::draw_to_screen(){
 
   //display all game artifacts
-  for(std::pair<std::string,Artifact*> p: Artifacts){
+  Artifact_Map::iterator it = Artifacts.begin();
+  for(Artifact_Map::iterator it = Artifacts.begin(); it!=Artifacts.end(); it++){
     //std::cout<<p.first<<"drawn\n";
-    (p.second)->draw(window);
+    (it->second)->draw(window);
   }
 
   //display game score

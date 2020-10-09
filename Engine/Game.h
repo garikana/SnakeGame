@@ -20,7 +20,7 @@
    void init(float r_rate,std::pair<float,float> screen_res,std::string path_to_font);
 
    // add game artifacts
-   void add_Artifacts(std::string Artifact_Name, Artifact& a);
+   void add_Artifacts(std::string Artifact_Name, std::unique_ptr<Artifact> A_ptr);
 
    //start game
    void run();

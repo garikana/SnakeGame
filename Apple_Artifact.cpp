@@ -13,8 +13,7 @@ Apple_Artifact::Apple_Artifact(float sz)
 
 //check if Apple is eaten by Snake
 bool Apple_Artifact::eaten_Snake(Artifact_Map& Game_Artifacts){
-  Artifact* snake = Game_Artifacts["Snake"];
-  std::pair<float,float> snake_pos = snake->get_Position();
+  std::pair<float,float> snake_pos = Game_Artifacts["Snake"]->get_Position();
   sf::Vector2f apple_pos = data.getPosition();
   if(snake_pos.first == apple_pos.x && snake_pos.second == apple_pos.y)
     return true;

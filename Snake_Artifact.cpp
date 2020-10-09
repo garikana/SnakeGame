@@ -49,8 +49,7 @@ bool Snake_Artifact::check_collision(Artifact_Map& Game_Artifacts,
 //collision with Apple
 bool Snake_Artifact::eat_Apple(Artifact_Map& Game_Artifacts,
                                sf::RenderWindow& window){
-  Artifact* apple = Game_Artifacts["Apple"];
-  std::pair<float,float> apple_pos = apple->get_Position();
+  std::pair<float,float> apple_pos = Game_Artifacts["Apple"]->get_Position();
   sf::RectangleShape head = data.front();
   sf::Vector2f head_pos = head.getPosition();
   if(head_pos.x == apple_pos.first && head_pos.y == apple_pos.second)
