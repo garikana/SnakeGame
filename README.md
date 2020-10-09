@@ -10,36 +10,36 @@ files to /usr/local/lib).
 3) Build executable using the below command. For more detailed instructions in compiling and linking programs using SFML, read 'Getting Started" secion of the link
 [SFML compile & link](https://www.sfml-dev.org/tutorials/2.5/).
 ```
-g++ -std=c++11 -o SnakeGame SnakeGame.cpp Engine/Game.cpp Snake_Artifact.cpp Apple_Artifact.cpp -lsfml-graphics -lsfml-window -lsfml-system
+g++ -std=c++14 -o SnakeGame SnakeGame.cpp Engine/Game.cpp Snake_Artifact.cpp Apple_Artifact.cpp -lsfml-graphics -lsfml-window -lsfml-system
 ```
 Note:- For MacOSX some of the dependent dynamic libraries for SFML are provided as .framework files. Linking with .framework files requires additional flags on g++ the commandline. A somewhat detailed instructions on how to do this on MacOSX is provided here [Linking with Frameworks on OSX](compiling_and_linking_withSFML.txt).
 Below is an example of how the command looks on MacOSX.
 ```
-g++ -std=c++11 -o SnakeGame SnakeGame.cpp Engine/Game.cpp Snake_Artifact.cpp Apple_Artifact.cpp -F /Users/grognard/Downloads/SFML-2.5.1-macos-clang/extlibs/Frameworks -rpath /Users/grognard/Downloads/SFML-2.5.1-macos-clang/extlibs/Frameworks -framework FLAC -framework freetype -framework ogg -framework OpenAL -framework vorbis -framework vorbisenc -framework vorbisfile -lsfml-graphics -lsfml-window -lsfml-system
+g++ -std=c++14 -o SnakeGame SnakeGame.cpp Engine/Game.cpp Snake_Artifact.cpp Apple_Artifact.cpp -F /Users/grognard/Downloads/SFML-2.5.1-macos-clang/extlibs/Frameworks -rpath /Users/grognard/Downloads/SFML-2.5.1-macos-clang/extlibs/Frameworks -framework FLAC -framework freetype -framework ogg -framework OpenAL -framework vorbis -framework vorbisenc -framework vorbisfile -lsfml-graphics -lsfml-window -lsfml-system
 ```
 ### Game Architecture
 #### Classes:-
 The game is built on 2 main classes.
 1) Game:- 
-This class is the game engine. It consists of the below methods.
+This class is the Game Engine. It consists of the below methods.
    - init
-     - Initializes game engine with screen-res, game refresh rate & game font
+     - Initializes Game Engine with screen-res, game refresh rate & game font
    - add_Artifacts
-     - Adds Game Artifacts. A Game Artifact is an abstraction of object displayed in the game
+     - Adds Game Artifacts to Game Engine. A Game Artifact is an abstraction of object displayed in the game
    - run
-     - Run the game
+     - Run the Game Engine
    - end
-     - End the game
+     - End the Game Engine
      
 
 Below are protected methods 
    - update_State
-     - updates Game Artifacts based on input game events. Can be overriden in a sub-class
+     - updates Game Artifacts based on input game events & Game env(other game artifacts). Can be overriden in a sub-class
    - get_Input
      - polls user inputs like keystrokes,  mouse-clicks etc.
    - get_Score
      - calculates and returns game score. Can be overriden in a sub-class
-2) Artifact:- This class is abstact concept of a game Artifact. It should be implemented. For Snake Game we define 2 sub-classes - Snake_Artifact & Apple_Artifact 
+2) Artifact:- This class is abstact concept of a game object. It should be implemented. For Snake Game we define 2 sub-classes - Snake_Artifact & Apple_Artifact 
 which implement this abstract class.
 Below are the pure-virtual methods that should be implemented.
    - update
