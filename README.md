@@ -1,5 +1,14 @@
 # SnakeGame
-Object-Oriented Implementation of SnakeGame in C++
+Object-Oriented Implementation of SnakeGame in C++. It features a some-what generic game engine class, that can be instantiated to implement different games. The type of games that can be implemented are limited to ones that follow the below generic framework.
+
+- game state is limited to (game objects, input events)
+- each game object is updated at time t, based on other game objects at t-1 and input events at t
+- game objects are displayed to screen after update
+
+The game engine is designed with the below principles in mind:-
+
+- take advantage of Inheritance & Run-time Polymorphism
+- RAII(Resource Allocation is Initialization)
 
 [![Snake Game](Videos/SnakeGame.gif)
 
